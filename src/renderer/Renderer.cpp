@@ -4,6 +4,12 @@
 
 namespace fb {
 
+struct RendererData {
+    glm::mat4 ViewProjectionMatrix;
+};
+
+static RendererData s_Data;
+
 void Renderer::Init() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -28,8 +34,8 @@ void Renderer::Clear() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Renderer::BeginScene() {
-    // Will setup camera matrices here in Phase 3
+void Renderer::BeginScene(const Camera2D& camera) {
+    s_Data.ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 }
 
 void Renderer::EndScene() {
@@ -37,6 +43,7 @@ void Renderer::EndScene() {
 
 void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform, const std::string& transformUniform) {
     shader->Bind();
+    shader->SetMat4("u_ViewProjection", s_Data.ViewProjectionMatrix);
     if (!transformUniform.empty()) {
         shader->SetMat4(transformUniform, transform);
     }

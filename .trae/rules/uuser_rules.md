@@ -93,7 +93,7 @@ The engine is built in six phases across seventeen discrete, verifiable steps. E
 6	2: Renderer Core	Texture system: stb_image loading, bind, mipmap, wrap/filter config	✅ Complete
 7	2: Renderer Core	Renderer interface: submit, flush, clear, viewport management	✅ Complete
 8	3: 2D System	Sprite class: quad geometry, UV mapping, texture binding	✅ Complete
-9	3: 2D System	2D camera: orthographic projection, pan/zoom, view matrix	⏳ Pending
+9	3: 2D System	2D camera: orthographic projection, pan/zoom, view matrix	✅ Complete
 10	3: 2D System	Sprite batching: dynamic vertex buffer, batch flush on texture switch	⏳ Pending
 11	4: 3D System	Mesh class: interleaved vertex data (pos, normal, uv), draw call	⏳ Pending
 12	4: 3D System	OBJ file parser: positions, normals, UVs, face index assembly	⏳ Pending

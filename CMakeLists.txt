@@ -26,7 +26,7 @@ FetchContent_MakeAvailable(glfw)
 FetchContent_Declare(
     glad2
     GIT_REPOSITORY https://github.com/Dav1dde/glad.git
-    GIT_TAG        v2.0.5
+    GIT_TAG        v2.0.4
     SOURCE_SUBDIR  cmake
 )
 FetchContent_MakeAvailable(glad2)

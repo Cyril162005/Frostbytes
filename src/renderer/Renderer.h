@@ -3,6 +3,7 @@
 #include <memory>
 #include "VertexArray.h"
 #include "Shader.h"
+#include "2d/Camera2D.h"
 
 namespace fb {
 
@@ -16,7 +17,7 @@ public:
     static void SetClearColor(const glm::vec4& color);
     static void Clear();
 
-    static void BeginScene();
+    static void BeginScene(const Camera2D& camera);
     static void EndScene();
 
     static void Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f), const std::string& transformUniform = "u_Transform");
