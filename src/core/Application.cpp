@@ -31,6 +31,32 @@ Application::Application(const std::string& title, uint32_t width, uint32_t heig
     m_TestSprite->SetScale({ 100.0f, 100.0f });
     m_TestSprite->SetColor({ 1.0f, 0.5f, 0.2f, 1.0f }); // Orange-ish
 
+    m_Camera = std::make_unique<Camera2D>(0.0f, (float)width, 0.0f, (float)height);
+
+    // Create a cube mesh
+    std::vector<Vertex> vertices = {
+        // Front
+        { {-0.5f, -0.5f,  0.5f}, {0, 0, 1}, {0, 0} },
+        { { 0.5f, -0.5f,  0.5f}, {0, 0, 1}, {1, 0} },
+        { { 0.5f,  0.5f,  0.5f}, {0, 0, 1}, {1, 1} },
+        { {-0.5f,  0.5f,  0.5f}, {0, 0, 1}, {0, 1} },
+        // Back
+        { {-0.5f, -0.5f, -0.5f}, {0, 0, -1}, {1, 0} },
+        { { 0.5f, -0.5f, -0.5f}, {0, 0, -1}, {0, 0} },
+        { { 0.5f,  0.5f, -0.5f}, {0, 0, -1}, {0, 1} },
+        { {-0.5f,  0.5f, -0.5f}, {0, 0, -1}, {1, 1} }
+    };
+    std::vector<uint32_t> indices = {
+        0, 1, 2, 2, 3, 0, // Front
+        1, 5, 6, 6, 2, 1, // Right
+        5, 4, 7, 7, 6, 5, // Back
+        4, 0, 3, 3, 7, 4, // Left
+        3, 2, 6, 6, 7, 3, // Top
+        4, 5, 1, 1, 0, 4  // Bottom
+    };
+    m_TestMesh = std::make_unique<Mesh>(vertices, indices);
+    m_MeshShader = std::make_unique<Shader>("assets/shaders/mesh.vert", "assets/shaders/mesh.frag");
+
     glGenVertexArrays(1, &m_EmptyVAO);
 }
 

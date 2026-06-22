@@ -6,6 +6,7 @@
 #include "2d/Sprite.h"
 #include "2d/Camera2D.h"
 #include "2d/Renderer2D.h"
+#include "3d/Mesh.h"
 
 namespace fb {
 
@@ -34,6 +35,10 @@ private:
     std::unique_ptr<Sprite> m_TestSprite;
     std::shared_ptr<Texture> m_WhiteTexture;
     std::unique_ptr<Camera2D> m_Camera;
+
+    // 3D Test
+    std::unique_ptr<Shader> m_MeshShader;
+    std::unique_ptr<Mesh>   m_TestMesh;
 
     uint32_t m_EmptyVAO = 0;
 
