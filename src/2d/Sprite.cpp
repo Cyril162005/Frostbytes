@@ -3,8 +3,6 @@
 
 namespace fb {
 
-std::shared_ptr<VertexArray> Sprite::s_QuadVAO = nullptr;
-
 Sprite::Sprite(const std::shared_ptr<Texture>& texture)
     : m_Texture(texture) {
 }
@@ -25,36 +23,6 @@ const glm::mat4& Sprite::GetTransform() const {
         m_Dirty = false;
     }
     return m_Transform;
-}
-
-void Sprite::Init() {
-    if (s_QuadVAO) return;
-
-    s_QuadVAO = std::make_shared<VertexArray>();
-
-    // Quad vertices: Position (vec3), TexCoord (vec2)
-    // Using a 1x1 quad from 0,0 to 1,1
-    float vertices[] = {
-        0.0f, 0.0f, 0.0f,   0.0f, 0.0f, // Bottom Left
-        1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // Bottom Right
-        1.0f, 1.0f, 0.0f,   1.0f, 1.0f, // Top Right
-        0.0f, 1.0f, 0.0f,   0.0f, 1.0f  // Top Left
-    };
-
-    auto vbo = std::make_shared<VertexBuffer>(vertices, sizeof(vertices));
-    vbo->SetLayout({
-        { ShaderDataType::Float3, "a_Position" },
-        { ShaderDataType::Float2, "a_TexCoord" }
-    });
-    s_QuadVAO->AddVertexBuffer(vbo);
-
-    uint32_t indices[] = { 0, 1, 2, 2, 3, 0 };
-    auto ibo = std::make_shared<IndexBuffer>(indices, 6);
-    s_QuadVAO->SetIndexBuffer(ibo);
-}
-
-void Sprite::Shutdown() {
-    s_QuadVAO.reset();
 }
 
 } // namespace fb

@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include <glad/gl.h>
 #include "2d/Sprite.h"
+#include "2d/Renderer2D.h"
 
 namespace fb {
 
@@ -15,11 +16,11 @@ void Renderer::Init() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_DEPTH_TEST);
 
-    Sprite::Init();
+    Renderer2D::Init();
 }
 
 void Renderer::Shutdown() {
-    Sprite::Shutdown();
+    Renderer2D::Shutdown();
 }
 
 void Renderer::OnWindowResize(uint32_t width, uint32_t height) {

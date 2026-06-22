@@ -5,6 +5,7 @@
 #include "renderer/Shader.h"
 #include "2d/Sprite.h"
 #include "2d/Camera2D.h"
+#include "2d/Renderer2D.h"
 
 namespace fb {
 
@@ -30,7 +31,6 @@ private:
 
     // Test assets
     std::unique_ptr<Shader> m_TestShader;
-    std::unique_ptr<Shader> m_SpriteShader;
     std::unique_ptr<Sprite> m_TestSprite;
     std::shared_ptr<Texture> m_WhiteTexture;
     std::unique_ptr<Camera2D> m_Camera;

@@ -27,10 +27,6 @@ public:
     const glm::mat4& GetTransform() const;
     const std::shared_ptr<Texture>& GetTexture() const { return m_Texture; }
 
-    static void Init();
-    static void Shutdown();
-    static const std::shared_ptr<VertexArray>& GetQuadVertexArray() { return s_QuadVAO; }
-
 private:
     std::shared_ptr<Texture> m_Texture;
     

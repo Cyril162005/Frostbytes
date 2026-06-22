@@ -17,6 +17,10 @@ public:
     uint32_t GetHeight() const { return m_Height; }
     uint32_t GetRendererID() const { return m_RendererID; }
 
+    bool operator==(const Texture& other) const {
+        return m_RendererID == other.m_RendererID;
+    }
+
 private:
     uint32_t m_RendererID;
     std::string m_Path;

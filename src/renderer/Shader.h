@@ -18,6 +18,7 @@ public:
     void Unbind() const;
 
     void SetInt(const std::string& name, int value);
+    void SetIntArray(const std::string& name, int* values, uint32_t count);
     void SetFloat(const std::string& name, float value);
     void SetVec2(const std::string& name, const glm::vec2& v);
     void SetVec3(const std::string& name, const glm::vec3& v);
