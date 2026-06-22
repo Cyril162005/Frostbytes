@@ -23,6 +23,8 @@ public:
 
 private:
     std::unique_ptr<Window> m_Window;
+    std::unique_ptr<class Shader> m_TestShader;
+    uint32_t m_EmptyVAO = 0;
     bool m_Running = true;
 
     static Application* s_Instance;

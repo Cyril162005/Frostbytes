@@ -44,6 +44,13 @@ add_executable(Frostbytes ${FB_SOURCES})
 target_link_libraries(Frostbytes PRIVATE glfw glad_gl glm::glm)
 target_include_directories(Frostbytes PRIVATE src vendor)
 
+# Copy assets folder next to the executable after every build
+add_custom_command(TARGET Frostbytes POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/assets"
+        "$<TARGET_FILE_DIR:Frostbytes>/assets"
+)
+
 if(MSVC)
     target_compile_options(Frostbytes PRIVATE /W4)
 else()
