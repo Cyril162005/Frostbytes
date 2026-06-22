@@ -1,7 +1,7 @@
 #include "Application.h"
 #include "Logger.h"
 #include "platform/Window.h"
-#include "renderer/Shader.h"
+#include "renderer/Renderer.h"
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
 #include <cassert>
@@ -17,12 +17,15 @@ Application::Application(const std::string& title, uint32_t width, uint32_t heig
     FB_INFO("Frostbytes Engine v0.1.0 starting...");
     m_Window = std::make_unique<Window>(title, width, height);
 
+    Renderer::Init();
+
     m_TestShader = std::make_unique<Shader>("assets/shaders/test.vert", "assets/shaders/test.frag");
     
     glGenVertexArrays(1, &m_EmptyVAO);
 }
 
 Application::~Application() {
+    Renderer::Shutdown();
     glDeleteVertexArrays(1, &m_EmptyVAO);
     FB_INFO("Frostbytes Engine shutdown complete");
 }
@@ -32,8 +35,8 @@ void Application::Run() {
     while (m_Running && !m_Window->ShouldClose()) {
         m_Window->PollEvents();
         
-        glClearColor(0.08f, 0.08f, 0.10f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        Renderer::SetClearColor({ 0.08f, 0.08f, 0.10f, 1.0f });
+        Renderer::Clear();
         
         float time = (float)glfwGetTime();
         m_TestShader->Bind();
