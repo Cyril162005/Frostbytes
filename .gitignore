@@ -1,7 +1,4 @@
-build/
-build2/
-build_final/
-build_test/
+build*/
 bin/
 lib/
 *.user
