@@ -97,7 +97,7 @@ The engine is built in six phases across seventeen discrete, verifiable steps. E
 10	3: 2D System	Sprite batching: dynamic vertex buffer, batch flush on texture switch	✅ Complete
 11	4: 3D System	Mesh class: interleaved vertex data (pos, normal, uv), draw call	✅ Complete
 12	4: 3D System	OBJ file parser: positions, normals, UVs, face index assembly	✅ Complete
-13	4: 3D System	Phong lighting: directional + point lights, material struct, fragment shader	⏳ Pending
+13	4: 3D System	Phong lighting: directional + point lights, material struct, fragment shader	✅ Complete
 14	5: Game Systems	Entity Component System (ECS): entity IDs, component pools, system iteration	⏳ Pending
 15	5: Game Systems	Input manager: key/mouse state, pressed/released/held queries	⏳ Pending
 16	5: Game Systems	Audio system: OpenAL Soft init, source/buffer management, 3D positioning	⏳ Pending

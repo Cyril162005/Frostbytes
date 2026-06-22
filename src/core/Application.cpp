@@ -81,6 +81,33 @@ void Application::Run() {
         
         Renderer2D::EndScene();
 
+        // 3. Render 3D Mesh
+        Renderer::BeginScene(*m_Camera);
+        
+        m_MeshShader->Bind();
+        m_MeshShader->SetVec3("u_ViewPos", { m_Camera->GetPosition(), 0.0f }); // Simplification for 2D-view camera
+        
+        Material mat;
+        mat.Diffuse = { 0.2f, 0.8f, 0.3f };
+        m_MeshShader->SetMaterial("u_Material", mat);
+        
+        DirectionalLight dirLight;
+        m_MeshShader->SetDirLight("u_DirLight", dirLight);
+        
+        PointLight ptLight;
+        ptLight.Position = { 400.0f, 300.0f, 100.0f };
+        ptLight.Color = { 1.0f, 0.0f, 0.0f };
+        m_MeshShader->SetPointLight("u_PointLights[0]", ptLight);
+        m_MeshShader->SetInt("u_PointLightCount", 1);
+        
+        glm::mat4 transform = glm::translate(glm::mat4(1.0f), { 100.0f, 100.0f, 0.0f }) *
+                              glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), { 1.0f, 1.0f, 0.0f }) *
+                              glm::scale(glm::mat4(1.0f), { 50.0f, 50.0f, 50.0f });
+        
+        Renderer::Submit(m_MeshShader, m_TestMesh->GetVertexArray(), transform);
+
+        Renderer::EndScene();
+
         m_Window->SwapBuffers();
     }
 }

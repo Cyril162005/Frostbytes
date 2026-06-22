@@ -85,6 +85,28 @@ void Shader::SetMat4(const std::string& name, const glm::mat4& m) {
     glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, glm::value_ptr(m));
 }
 
+void Shader::SetMaterial(const std::string& name, const Material& material) {
+    SetVec3(name + ".ambient", material.Ambient);
+    SetVec3(name + ".diffuse", material.Diffuse);
+    SetVec3(name + ".specular", material.Specular);
+    SetFloat(name + ".shininess", material.Shininess);
+}
+
+void Shader::SetDirLight(const std::string& name, const DirectionalLight& light) {
+    SetVec3(name + ".direction", light.Direction);
+    SetVec3(name + ".color", light.Color);
+    SetFloat(name + ".intensity", light.Intensity);
+}
+
+void Shader::SetPointLight(const std::string& name, const PointLight& light) {
+    SetVec3(name + ".position", light.Position);
+    SetVec3(name + ".color", light.Color);
+    SetFloat(name + ".intensity", light.Intensity);
+    SetFloat(name + ".constant", light.Constant);
+    SetFloat(name + ".linear", light.Linear);
+    SetFloat(name + ".quadratic", light.Quadratic);
+}
+
 std::string Shader::ReadFile(const std::string& path) {
     std::ifstream file(path);
     if (!file.is_open()) {
