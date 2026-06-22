@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
+set(CMAKE_POLICY_DEFAULT_CMP0000 NEW)
+set(CMAKE_POLICY_DEFAULT_CMP0048 NEW)
 project(Frostbytes VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -24,7 +26,7 @@ FetchContent_MakeAvailable(glfw)
 FetchContent_Declare(
     glad2
     GIT_REPOSITORY https://github.com/Dav1dde/glad.git
-    GIT_TAG        v2.0.4
+    GIT_TAG        v2.0.5
     SOURCE_SUBDIR  cmake
 )
 FetchContent_MakeAvailable(glad2)

@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include <glad/gl.h>
+#include "2d/Sprite.h"
 
 namespace fb {
 
@@ -7,9 +8,12 @@ void Renderer::Init() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_DEPTH_TEST);
+
+    Sprite::Init();
 }
 
 void Renderer::Shutdown() {
+    Sprite::Shutdown();
 }
 
 void Renderer::OnWindowResize(uint32_t width, uint32_t height) {
@@ -31,9 +35,11 @@ void Renderer::BeginScene() {
 void Renderer::EndScene() {
 }
 
-void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform) {
+void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform, const std::string& transformUniform) {
     shader->Bind();
-    // shader->SetMat4("u_Transform", transform); // Future usage
+    if (!transformUniform.empty()) {
+        shader->SetMat4(transformUniform, transform);
+    }
     DrawIndexed(vertexArray);
 }
 

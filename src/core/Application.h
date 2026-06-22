@@ -2,6 +2,8 @@
 #include <memory>
 #include <string>
 #include <cstdint>
+#include "renderer/Shader.h"
+#include "2d/Sprite.h"
 
 namespace fb {
 
@@ -23,9 +25,15 @@ public:
 
 private:
     std::unique_ptr<Window> m_Window;
-    std::unique_ptr<class Shader> m_TestShader;
-    uint32_t m_EmptyVAO = 0;
     bool m_Running = true;
+
+    // Test assets
+    std::unique_ptr<Shader> m_TestShader;
+    std::unique_ptr<Shader> m_SpriteShader;
+    std::unique_ptr<Sprite> m_TestSprite;
+    std::shared_ptr<Texture> m_WhiteTexture;
+
+    uint32_t m_EmptyVAO = 0;
 
     static Application* s_Instance;
 };

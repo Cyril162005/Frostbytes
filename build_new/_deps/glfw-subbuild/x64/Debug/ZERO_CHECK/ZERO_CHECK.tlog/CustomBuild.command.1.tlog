@@ -1,0 +1,10 @@
+^D:\PROJECT\FROSTBYTES\BUILD_NEW\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1BFCDC82FF5521F756619D3BCFD76169\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Project/Frostbytes/build_new/_deps/glfw-subbuild -BD:/Project/Frostbytes/build_new/_deps/glfw-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Project/Frostbytes/build_new/_deps/glfw-subbuild/glfw-populate.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
