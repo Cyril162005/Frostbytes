@@ -87,9 +87,9 @@ The engine is built in six phases across seventeen discrete, verifiable steps. E
 #	Phase	Scope / Deliverables	Status
 1	1: Foundation	CMake setup, GLFW window creation, Logger system, Application loop, main.cpp	✅ Complete
 2	1: Foundation	Input polling abstraction (keyboard/mouse), Event callback wiring via GLFW	✅ Complete
-3	1: Foundation	Build verification + project structure review	⏳ Pending
+3	1: Foundation	Build verification + project structure review	✅ Complete
 4	2: Renderer Core	Shader class: GLSL compile, link, uniform setters, error reporting	✅ Complete
-5	2: Renderer Core	VBO / VAO abstraction: vertex buffer, vertex array, element buffer	⏳ Pending
+5	2: Renderer Core	VBO / VAO abstraction: vertex buffer, vertex array, element buffer	✅ Complete
 6	2: Renderer Core	Texture system: stb_image loading, bind, mipmap, wrap/filter config	⏳ Pending
 7	2: Renderer Core	Renderer interface: submit, flush, clear, viewport management	⏳ Pending
 8	3: 2D System	Sprite class: quad geometry, UV mapping, texture binding	⏳ Pending

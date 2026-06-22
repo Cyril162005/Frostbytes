@@ -1,4 +1,7 @@
 build/
+build2/
+build_final/
+build_test/
 bin/
 lib/
 *.user
